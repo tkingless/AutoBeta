@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/tkingless/AutoBeta#readme",
   "dependencies": {
+    "mocha": "^3.0.2",
     "phantomjs": "^2.1.7"
   }
 }
