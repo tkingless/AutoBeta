@@ -1,0 +1,25 @@
+{
+  "name": "autobeta",
+  "version": "0.0.1",
+  "description": "a project for studying nodejs basic dev skills",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tkingless/AutoBeta.git"
+  },
+  "keywords": [
+    "AutoBeta"
+  ],
+  "author": "tkingless",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tkingless/AutoBeta/issues"
+  },
+  "homepage": "https://github.com/tkingless/AutoBeta#readme",
+  "dependencies": {
+    "phantomjs": "^2.1.7"
+  }
+}
