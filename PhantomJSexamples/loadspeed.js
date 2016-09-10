@@ -19,5 +19,4 @@ page.open(address, function(status) {
   }
   phantom.exit();
 });
-
 //usage : phantomjs loadspeed.js http://www.google.com
