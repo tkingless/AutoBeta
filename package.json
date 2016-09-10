@@ -3,8 +3,13 @@
   "version": "0.0.1",
   "description": "a project for studying nodejs basic dev skills",
   "main": "index.js",
+   "engines": {
+    "node": ">=2.15.9"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "mocha": "mocha",
+    "phantomjs": "phantomjs"
   },
   "repository": {
     "type": "git",
