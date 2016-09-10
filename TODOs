@@ -1,0 +1,4 @@
+use package.json instead: https://github.com/amir20/phantomjs-node
+modernizr to detect features https://modernizr.com/docs/#s2,  https://github.com/ariya/phantomjs/blob/master/examples/features.js
+high-level convenient functionalities, check also projects such as CasperJS http://phantomjs.org/related-projects.html
+integrate with mocha, chai
