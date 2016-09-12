@@ -1,7 +1,7 @@
 use package.json instead: https://github.com/amir20/phantomjs-node
 modernizr to detect features https://modernizr.com/docs/#s2,  https://github.com/ariya/phantomjs/blob/master/examples/features.js
 high-level convenient functionalities, check also projects such as CasperJS http://phantomjs.org/related-projects.html
-integrate with mocha, chai
+integrate with mocha, chai, https://semaphoreci.com/community/tutorials/getting-started-with-node-js-and-mocha (iinstalled babel-cli  chai  express  mocha  phantomjs  request  webdriverjs)
 	mocha usage
 		1. "make test" usage : use Makefile to config mocha and run tests
 		2. npm run mocha tests
