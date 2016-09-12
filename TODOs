@@ -6,3 +6,4 @@ integrate with mocha, chai
 		1. "make test" usage : use Makefile to config mocha and run tests
 		2. npm run mocha tests
 Babel, ES6 (ES2015) http://info.meteor.com/blog/set-up-sublime-text-for-meteor-es6-es2015-and-jsx-syntax-and-linting (mostly for st3)
+AppServer part
