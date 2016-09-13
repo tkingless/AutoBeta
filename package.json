@@ -7,7 +7,7 @@
     "node": ">=2.15.9"
   },
   "scripts": {
-    "test": "./nodes_modules/.bin/mocha --reporter spec",
+    "test": "./node_modules/.bin/mocha --reporter spec tests",
     "mocha": "mocha",
     "phantomjs": "phantomjs"
   },

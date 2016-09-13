@@ -1,9 +1,10 @@
 use package.json instead: https://github.com/amir20/phantomjs-node
 modernizr to detect features https://modernizr.com/docs/#s2,  https://github.com/ariya/phantomjs/blob/master/examples/features.js
 high-level convenient functionalities, check also projects such as CasperJS http://phantomjs.org/related-projects.html
-integrate with mocha, chai, https://semaphoreci.com/community/tutorials/getting-started-with-node-js-and-mocha (iinstalled babel-cli  chai  express  mocha  phantomjs  request  webdriverjs)
+integrate with mocha, chai, https://semaphoreci.com/community/tutorials/getting-started-with-node-js-and-mocha (installed babel-cli  chai  express  mocha  phantomjs  request  webdriverjs)
 	mocha usage
 		1. "make test" usage : use Makefile to config mocha and run tests
 		2. npm run mocha tests
+		3. default mocha look for test/ folder for test cases, not tests/
 Babel, ES6 (ES2015) http://info.meteor.com/blog/set-up-sublime-text-for-meteor-es6-es2015-and-jsx-syntax-and-linting (mostly for st3)
 AppServer part
