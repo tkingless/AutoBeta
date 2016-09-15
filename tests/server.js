@@ -1,6 +1,8 @@
 var expect  = require("chai").expect;
 var request = require("request");
 
+//before you run this test, run "node app/server.js"
+
 describe("Color Code Converter API", function() {
 
   describe("RGB to Hex conversion", function() {
