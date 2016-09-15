@@ -2,6 +2,7 @@ var express = require("express");
 var app = express();
 var converter = require("./converter");
 
+//this is the url interpreter
 
 app.get("/rgbToHex", function(req, res) {
   var red   = parseInt(req.query.red, 10);
