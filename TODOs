@@ -1,12 +1,24 @@
 use package.json instead: https://github.com/amir20/phantomjs-node
 modernizr to detect features https://modernizr.com/docs/#s2,  https://github.com/ariya/phantomjs/blob/master/examples/features.js
 high-level convenient functionalities, check also projects such as CasperJS http://phantomjs.org/related-projects.html
-integrate with mocha, chai, (installed babel-cli  chai  express  mocha  phantomjs  request  webdriverjs should)
-	mocha usage
-		1. "make test" usage : use Makefile to config mocha and run tests
-		2. npm run mocha tests
-		3. default mocha look for test/ folder for test cases, not tests/
+
+Testing
+	integrate with mocha, chai, (installed babel-cli  chai  express  mocha  phantomjs  request  webdriverjs should)
+		mocha usage
+			1. "make test" usage : use Makefile to config mocha and run tests
+			2. npm run mocha tests
+			3. default mocha look for test/ folder for test cases, not tests/
+	Test spies, stubs and mocks: sinon (for test setup).
+
 Babel, ES6 (ES2015) http://info.meteor.com/blog/set-up-sublime-text-for-meteor-es6-es2015-and-jsx-syntax-and-linting (mostly for st3)
+	1. http://nodeschool.io/index.html
+
 AppServer part
-	1. express and js coverage: http://brianstoner.com/blog/testing-in-nodejs-with-mocha/?__hstc=233161921.5956c36972ed785db0e920f9b0588c27.1473732405144.1473814365095.1473903820427.3&__hssc=233161921.1.1473903820427&__hsfp=180593412
+	1. express and js coverage, auto running test, CI: 
+		(further investigation) http://brianstoner.com/blog/testing-in-nodejs-with-mocha/?__hstc=233161921.5956c36972ed785db0e920f9b0588c27.1473732405144.1473814365095.1473903820427.3&__hssc=233161921.1.1473903820427&__hsfp=180593412
 	2. overall archi tutorial https://blog.risingstack.com/node-hero-node-js-project-structure-tutorial/
+	3. express intro
+		(read) https://www.tutorialspoint.com/nodejs/nodejs_express_framework.htm
+		
+Node Basics
+	1. http://callbackhell.com/
