@@ -8,7 +8,10 @@ Testing
 			1. "make test" usage : use Makefile to config mocha and run tests
 			2. npm run mocha tests
 			3. default mocha look for test/ folder for test cases, not tests/
-	Test spies, stubs and mocks: sinon (for test setup).
+	(read) Test spies, stubs and mocks: sinon (for test setup).
+	"make test" same as "npm test", set by pakcage.json
+	"npm run test-unit" is using *.spec.js standard
+
 
 Babel, ES6 (ES2015) http://info.meteor.com/blog/set-up-sublime-text-for-meteor-es6-es2015-and-jsx-syntax-and-linting (mostly for st3)
 	1. http://nodeschool.io/index.html
@@ -24,4 +27,5 @@ Node Basics
 	1. http://callbackhell.com/
 
 Code coverage
-	1. https://github.com/gotwarlost/istanbul
+	(done)1. https://github.com/gotwarlost/istanbul
+		npm run istanbul
