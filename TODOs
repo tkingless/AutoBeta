@@ -1,4 +1,6 @@
-
+TODO first
+====
+Install global packages in globalPackages.txt
 
 
 Babel, ES6 (ES2015) http://info.meteor.com/blog/set-up-sublime-text-for-meteor-es6-es2015-and-jsx-syntax-and-linting (mostly for st3)
