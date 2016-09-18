@@ -8,7 +8,6 @@
   },
   "scripts": {
     "test": "make test",
-    "test-unit": "NODE_ENV=test mocha --require co-mocha 'lib/*.spec.js'",
     "mocha": "mocha",
     "istanbul": "istanbul cover _mocha $(find ./lib -name \"*.spec.js\" -not -path \"./node_modules/*\")"
   },
