@@ -31,9 +31,10 @@
     "chai": "3.5.0",
     "co-mocha": "1.1.2",
     "mocha": "2.5.3",
+    "phantomjs-prebuilt": "^2.1.12",
+    "require-dir": "^0.3.0",
     "sinon": "1.17.4",
     "sinon-chai": "2.8.0",
-    "wdio-spec-reporter": "0.0.3",
     "webdriverio": "^4.2.3"
   }
 }
