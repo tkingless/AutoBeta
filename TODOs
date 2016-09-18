@@ -15,7 +15,8 @@ Testing
 	"make test" same as "npm test", set by pakcage.json
 	"npm run test-unit" is using *.spec.js standard
 
-
+PhantomJSexamples/
+you need phantomjs npm package binary with running selenium jar to get it run, old styles
 
 
 
