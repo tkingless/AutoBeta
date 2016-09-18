@@ -1,3 +1,10 @@
+Demo of this branch
+====
+	2you see there two patterns:
+		for lib/ there are *spec.js, this style is to test model unit test, try run "npm run test-unit", which is direction to test-unit cmd in package.json
+
+		for tests/ , let it be integration test sytle, test external library functionality, try run "npm test", which directin the Makefile test file
+
 Testing
 	1. integrate with mocha, chai, (installed babel-cli  chai  express  mocha  phantomjs  request  webdriverjs should)
 		mocha usage
@@ -8,10 +15,7 @@ Testing
 	"make test" same as "npm test", set by pakcage.json
 	"npm run test-unit" is using *.spec.js standard
 
-	2. you see there two patterns:
-		for lib/ there are *spec.js, this style is to test model unit test
 
-		for tests/ , let it be integration test sytle, test external library functionality
 
 
 
