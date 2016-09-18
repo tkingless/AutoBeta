@@ -1,3 +1,5 @@
+//This is async test case,  run speed found super quick,  http://webdriver.io/guide/getstarted/v4.html  "synchronous"
+
 'use strict'
 
 const
