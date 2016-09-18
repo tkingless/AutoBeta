@@ -29,3 +29,23 @@ Node Basics
 Code coverage
 	(done)1. https://github.com/gotwarlost/istanbul
 		npm run istanbul
+
+WebdrvierIO
+	1. wdio config
+	2. https://chimp.readme.io/ 
+	3. seems a great thing https://github.com/vvo/selenium-standalone
+	3. TestingBot
+	4. installed webdrive 4.x globally, can set bundle with mocha, spec, phatomjs
+
+	Note
+	webdriverio/example
+	1. need to run "npm install" twice, still no phatom-prebuilt
+	2. after  "npm install",  "node_modules/grunt-cli/bin/grunt build" to genertae build/
+	3. example/standalone/webdriver-mocha example require 
+		ABSOLUTE_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+		PATH="$ABSOLUTE_PATH/node_modules/phantomjs-prebuilt/lib/phantom/bin:$PATH"
+		java -jar ../../AutoBeta/selenium-server-standalone-2.53.1.jar
+
+	webdriverio-example
+	1. go to standalone-mode/, npm install, npm run test-local (cannot running standalone selenium)
+	2. webdriverio standalone is a specific term, not meaning to "java -jar a selenium standalone server jar", super quick
