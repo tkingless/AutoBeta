@@ -11,7 +11,8 @@
     "test-unit": "NODE_ENV=test mocha --require co-mocha 'lib/*.spec.js'",
     "mocha": "mocha",
     "wdio": " wdio",
-    "istanbul": "istanbul cover _mocha $(find ./lib -name \"*.spec.js\" -not -path \"./node_modules/*\")"
+    "istanbul": "istanbul cover _mocha $(find ./lib -name \"*.spec.js\" -not -path \"./node_modules/*\")",
+    "test-wdio":"mocha -t 30000 tests/wdio/wdioFunctionalTest.js"
   },
   "repository": {
     "type": "git",

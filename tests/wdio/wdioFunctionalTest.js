@@ -9,11 +9,11 @@ const
   specs = requireDir('./specs/'),
   //isLocal = process.env.E2E_ENV == 'local',
   //connections = isLocal
-   // ? require('./webdriver.local.js')
+  // ? require('./webdriver.local.js')
   //  : require('./webdriver.cloud.js')
 
-//No need to have other config yet
-  connections =  require('./wdio.standalone.phantomjs.conf.js')
+  //No need to have other config yet
+  connections = require('./wdio.standalone.phantomjs.conf.js')
 
 let program
 
@@ -39,7 +39,7 @@ connections.forEach(connection => {
 if (true) after(() => program.kill())
 
 /** generate description from capabilities */
-function desc (connection) {
+function desc(connection) {
   const c = connection.desiredCapabilities
   return [c.browserName].concat(c.version || [], c.platform || []).join(' - ')
 }
