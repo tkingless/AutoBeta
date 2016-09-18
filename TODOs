@@ -1,27 +1,9 @@
-use package.json instead: https://github.com/amir20/phantomjs-node
-modernizr to detect features https://modernizr.com/docs/#s2,  https://github.com/ariya/phantomjs/blob/master/examples/features.js
-high-level convenient functionalities, check also projects such as CasperJS http://phantomjs.org/related-projects.html
 
-Testing
-	integrate with mocha, chai, (installed babel-cli  chai  express  mocha  phantomjs  request  webdriverjs should)
-		mocha usage
-			1. "make test" usage : use Makefile to config mocha and run tests
-			2. npm run mocha tests
-			3. default mocha look for test/ folder for test cases, not tests/
-	(read) Test spies, stubs and mocks: sinon (for test setup).
-	"make test" same as "npm test", set by pakcage.json
-	"npm run test-unit" is using *.spec.js standard
 
 
 Babel, ES6 (ES2015) http://info.meteor.com/blog/set-up-sublime-text-for-meteor-es6-es2015-and-jsx-syntax-and-linting (mostly for st3)
 	1. http://nodeschool.io/index.html
 
-AppServer part
-	1. auto running test, CI: 
-		(further investigation) http://brianstoner.com/blog/testing-in-nodejs-with-mocha/?__hstc=233161921.5956c36972ed785db0e920f9b0588c27.1473732405144.1473814365095.1473903820427.3&__hssc=233161921.1.1473903820427&__hsfp=180593412
-	2. overall archi tutorial https://blog.risingstack.com/node-hero-node-js-project-structure-tutorial/
-	3. express intro
-		(read) https://www.tutorialspoint.com/nodejs/nodejs_express_framework.htm
 
 Node Basics
 	1. http://callbackhell.com/
@@ -52,16 +34,9 @@ WebdrvierIO
 
 
 
-#deprecated reference:
+deprecated reference:
+####
 
-SetEnv for selenium jar file standalone:
-
-#!/bin/bash
-
-#SetEnv
-#ABSOLUTE_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/$(basename "${BASH_SOURCE[0]}")"
-ABSOLUTE_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-
-echo $ABSOLUTE_PATH
-
-PATH="$ABSOLUTE_PATH/node_modules/phantomjs/bin:$PATH" 
+use package.json instead: https://github.com/amir20/phantomjs-node
+modernizr to detect features https://modernizr.com/docs/#s2,  https://github.com/ariya/phantomjs/blob/master/examples/features.js
+high-level convenient functionalities, check also projects such as CasperJS http://phantomjs.org/related-projects.html
