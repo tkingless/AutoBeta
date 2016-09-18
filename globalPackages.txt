@@ -2,3 +2,19 @@ npm recommended global package:
 
 istanbul@0.4.5
 jshint@2.9.3
+
+sublimet text 2 packages:
+
+- Jshint:
+    - usage alt+j
+- javascriptnext
+    - view->syntax->javascript->ES6
+-Jsformat
+
+- indent xml and Jsformat problem (ubuntu 14.04 python 2.7 x64 problem)
+    - wget http://www.python.org/ftp/python/2.6.6/Python-2.6.6.tar.bz2
+	tar xvjf Python-2.6.6.tar.bz2
+	cd Python-2.6.6
+	./configure --prefix=/home/<your_user_name>/.local --enable-unicode=ucs4
+	make && make install
+	ln -s ~/.local/lib/python2.6 <Sublime Directory>/lib/python2.6
