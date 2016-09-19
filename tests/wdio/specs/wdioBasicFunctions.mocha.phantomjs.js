@@ -1,11 +1,12 @@
 'use strict'
-const assert = require('assert'),
+const
 	fs = require('fs'),
 	chai = require('chai'),
 	chaiAsPromised = require('chai-as-promised')
 
-chai.Should();
 chai.use(chaiAsPromised);
+chai.should();
+
 
 module.exports = () => {
 
@@ -64,10 +65,10 @@ module.exports = () => {
 			});
 
 			it('Get viewPortSize', function(done) {
-				browser.getViewportSize().then(function(size) {
-					console.log(size) // outputs: {width: 1024, height: 768}
-					done();
-				});
+				browser.getViewportSize().should.eventually.deep.equal({
+					width: 1024,
+					height: 768
+				}).notify(done);
 			});
 
 		});
