@@ -2,7 +2,8 @@
 const
 	fs = require('fs'),
 	chai = require('chai'),
-	chaiAsPromised = require('chai-as-promised')
+	chaiAsPromised = require('chai-as-promised'),
+	assert = chai.assert;
 
 chai.use(chaiAsPromised);
 chai.should();
@@ -71,14 +72,14 @@ module.exports = () => {
 
 		describe('Website navigation', function() {
 
-			it('Go to webdriver.io', function(done) {
+			it('Go to example.com', function(done) {
 
-				browser.url('http://webdriver.io').then(function() {
+				browser.url('http://example.com').then(function() {
 					browser.getUrl().then(function(url) {
 						//url.should.have('example.com');
-						console.log(url);
-						browser.saveScreenshot('./tests/wdio/wdioBasicFunctions/webdriverio.png');
-						//url.should.have('webdriver').notify(done);
+						browser.saveScreenshot('./tests/wdio/wdioBasicFunctions/exampleDotCom.png');
+						//url.should.become("http://example.com/").notify(done);
+						assert.equal(url,"http://examplde.com/"); //wrong assert can stuck program...?!!
 						done();
 					})
 
