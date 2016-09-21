@@ -27,7 +27,6 @@ module.exports = () => {
 
 		before(function() {
 			chaiAsPromised.transferPromiseness = browser.transferPromiseness;
-			mkdirSync('./tests/wdio/wdioBasicFunctions/');
 			return browser.url('http://www.google.com');
 		});
 
@@ -38,6 +37,7 @@ module.exports = () => {
 
 			it('Transfer promises, taking screenshot on google', function(done) {
 
+				mkdirSync('./tests/wdio/wdioBasicFunctions/');
 				browser.saveScreenshot('./tests/wdio/wdioBasicFunctions/google.defaultSize.png');
 				done();
 
