@@ -2,12 +2,7 @@
 const
 	fs = require('fs'),
 	chai = require('chai'),
-	chaiAsPromised = require('chai-as-promised'),
 	assert = chai.assert;
-
-chai.use(chaiAsPromised);
-chai.should();
-
 
 module.exports = () => {
 
@@ -27,7 +22,6 @@ module.exports = () => {
 	describe('Webdriverio Protocol basic functionalities', function() {
 
 		before(function() {
-			chaiAsPromised.transferPromiseness = browser.transferPromiseness;
 			return browser.url('http://www.google.com');
 		});
 
@@ -38,7 +32,7 @@ module.exports = () => {
 
 			it('Transfer promises, taking screenshot on google', function(done) {
 
-				//mkdirSync('./tests/wdio/wdioBasicFunctions/');
+				mkdirSync('./tests/wdio/wdioBasicFunctions/');
 				browser.saveScreenshot('./tests/wdio/wdioBasicFunctions/google.defaultSize.png');
 				done();
 			});
@@ -67,23 +61,6 @@ module.exports = () => {
 					width: 1024,
 					height: 768
 				}).notify(done);
-			});
-		});
-
-		describe('Website navigation', function() {
-
-			it('Go to example.com', function(done) {
-
-				browser.url('http://example.com').then(function() {
-					browser.getUrl().then(function(url) {
-						browser.saveScreenshot('./tests/wdio/wdioBasicFunctions/exampleDotCom.png');
-						//TOFIX
-						//assert.equal(url,"http://examplde.com/"); //wrong assert can stuck program...?!!
-						url.should.equal("http://example.com/");
-						done();
-					})
-
-				});
 			});
 		});
 

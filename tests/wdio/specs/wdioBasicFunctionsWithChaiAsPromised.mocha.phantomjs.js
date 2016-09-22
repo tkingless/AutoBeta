@@ -38,7 +38,7 @@ module.exports = () => {
 
 			it('Transfer promises, taking screenshot on google', function(done) {
 
-				//mkdirSync('./tests/wdio/wdioBasicFunctions/');
+				mkdirSync('./tests/wdio/wdioBasicFunctions/');
 				browser.saveScreenshot('./tests/wdio/wdioBasicFunctions/google.defaultSize.png');
 				done();
 			});
