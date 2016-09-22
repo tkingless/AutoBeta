@@ -76,10 +76,10 @@ module.exports = () => {
 
 				browser.url('http://example.com').then(function() {
 					browser.getUrl().then(function(url) {
-						//url.should.have('example.com');
 						browser.saveScreenshot('./tests/wdio/wdioBasicFunctions/exampleDotCom.png');
-						//url.should.become("http://example.com/").notify(done);
-						assert.equal(url,"http://examplde.com/"); //wrong assert can stuck program...?!!
+						//TOFIX
+						//assert.equal(url,"http://examplde.com/"); //wrong assert can stuck program...?!!
+						url.should.equal("http://example.com/");
 						done();
 					})
 
