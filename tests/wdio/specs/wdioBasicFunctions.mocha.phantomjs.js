@@ -4,6 +4,8 @@ const
 	chai = require('chai'),
 	assert = chai.assert;
 
+chai.should();
+
 module.exports = () => {
 
 	//not synchronous
@@ -27,13 +29,10 @@ module.exports = () => {
 
 		describe('Take screenshot', function() {
 
-			//all it()s are run in series, with only mocha done() callback is called , jump to next it(), if no done event passed to it(), the
-			//it() will just go straight away not waiting async function to fisnish, so add done() to when asyn function is completed.
-
 			it('Transfer promises, taking screenshot on google', function(done) {
 
-				mkdirSync('./tests/wdio/wdioBasicFunctions/');
-				browser.saveScreenshot('./tests/wdio/wdioBasicFunctions/google.defaultSize.png');
+				mkdirSync('./tests/wdio/wdioBasicFunctions/noChaiAsPromise/');
+				browser.saveScreenshot('./tests/wdio/wdioBasicFunctions/noChaiAsPromise/google.defaultSize.png');
 				done();
 			});
 
@@ -49,9 +48,9 @@ module.exports = () => {
 
 						var screenshot = browser.saveScreenshot().then(function(data) {
 							console.log('browser saved 1024 768 png');
-							return fs.writeFileSync('./tests/wdio/wdioBasicFunctions/google.1024.768.png', data);
+							return fs.writeFileSync('./tests/wdio/wdioBasicFunctions/noChaiAsPromise/google.1024.768.png', data);
 						})
-						done(); //you may try putting this done() on the last line if this it()
+						done();
 					})
 				});
 			});
@@ -61,6 +60,24 @@ module.exports = () => {
 					width: 1024,
 					height: 768
 				}).notify(done);
+			});
+		});
+
+		describe('Website navigation', function() {
+
+			it('Go to example.com', function(done) {
+				browser.url('http://example.com').then(function() {
+
+					browser.getUrl().then(function(url) {
+						browser.saveScreenshot('./tests/wdio/wdioBasicFunctions/noChaiAsPromise/exampleDotCom.png');
+						try {
+							url.should.equal("http://example.com/");
+							done()
+						} catch (e) {
+							done(e);
+						}
+					})
+				});
 			});
 		});
 
