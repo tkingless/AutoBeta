@@ -54,7 +54,6 @@ module.exports = () => {
 					browser.getViewportSize().then(function(size) {
 
 						var screenshot = browser.saveScreenshot().then(function(data) {
-							console.log('browser saved 1024 768 png');
 							return fs.writeFileSync('./tests/wdio/wdioBasicFunctions/google.1024.768.png', data);
 						})
 						done(); //you may try putting this done() on the last line if this it()

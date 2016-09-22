@@ -47,7 +47,6 @@ module.exports = () => {
 					browser.getViewportSize().then(function(size) {
 
 						var screenshot = browser.saveScreenshot().then(function(data) {
-							console.log('browser saved 1024 768 png');
 							return fs.writeFileSync('./tests/wdio/wdioBasicFunctions/noChaiAsPromise/google.1024.768.png', data);
 						})
 						done();
@@ -77,6 +76,16 @@ module.exports = () => {
 							done(e);
 						}
 					})
+				});
+			});
+		});
+
+		describe('Website navigation 2', function() {
+
+			it('Go to example.com', function() {
+				return browser.url('http://example.com');
+				return browser.getUrl().then(function(url) {
+					console.log(url);
 				});
 			});
 		});
