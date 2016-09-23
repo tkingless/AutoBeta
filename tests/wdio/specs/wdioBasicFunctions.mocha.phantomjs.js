@@ -116,12 +116,24 @@ module.exports = () => {
 
 		describe('Google page search webdriverio', function() {
 
-			it('Get Search text field element', function() {
+			it('Get source and write as .html', function() {
 				//var selectBox = browser.element('input#lst-ib.gsfi');
-				var selectBox = browser.element('div#eEe');
-				var val = selectBox.getValue();
-				 console.log(val);
-				 browser.saveScreenshot('./tests/wdio/wdioBasicFunctions/noChaiAsPromise/googleSearch.png');
+				/*return browser.element('#_eEe').then(function(ele){
+					//var val = ele.getValue();
+					console.log(ele);
+				});*/
+
+				return browser.getSource().then(function(source) {
+					fs.writeFileSync('./tests/wdio/wdioBasicFunctions/noChaiAsPromise/google.html', source);
+					browser.saveScreenshot('./tests/wdio/wdioBasicFunctions/noChaiAsPromise/googleSearch.png');
+				});
+			})
+
+			it('Async get text attr', function() {
+				return browser
+					.getValue('#als').then(function(value) {
+						console.log(value);
+					})
 			})
 		})
 
