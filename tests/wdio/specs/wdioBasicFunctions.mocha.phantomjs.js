@@ -28,14 +28,14 @@ module.exports = () => {
 		});
 
 		beforeEach(function() {
-			return browser.url('http://www.google.com').then(function(){
+			return browser.url('http://www.google.com').then(function() {
 				return browser.getUrl().then(function(url) {
-						url.should.to.contain("http://www.google.com");
-					}); 
+					url.should.to.contain("http://www.google.com");
+				});
 			});
 		});
 
-		describe('Take screenshot', function() {
+		/*describe('Take screenshot', function() {
 
 			it('Transfer promises, taking screenshot on google', function(done) {
 
@@ -112,7 +112,18 @@ module.exports = () => {
 				});
 				console.log('runtime 9');
 			});
-		});
+		});*/
+
+		describe('Google page search webdriverio', function() {
+
+			it('Get Search text field element', function() {
+				//var selectBox = browser.element('input#lst-ib.gsfi');
+				var selectBox = browser.element('div#eEe');
+				var val = selectBox.getValue();
+				 console.log(val);
+				 browser.saveScreenshot('./tests/wdio/wdioBasicFunctions/noChaiAsPromise/googleSearch.png');
+			})
+		})
 
 	});
 
