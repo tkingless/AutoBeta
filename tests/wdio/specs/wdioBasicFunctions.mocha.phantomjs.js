@@ -84,15 +84,15 @@ module.exports = () => {
 		describe('Website navigation 2', function() {
 
 			it('Go to callbackhell.com', function() {
-				console.log('runtime 1');
+				console.log('		runtime 1');
 				return browser.url('http://callbackhell.com').then(function() {
-					console.log('runtime 2');
+					console.log('		runtime 2');
 					return browser.getUrl().then(function(url) {
-						console.log('runtime 3');
+						console.log('		runtime 3');
 						url.should.equal("http://callbackhell.com/");
-						console.log('runtime 4');
+						console.log('		runtime 4');
 						browser.saveScreenshot('./tests/wdio/wdioBasicFunctions/noChaiAsPromise/callbackhell.png');
-						console.log('runtime 5');
+						console.log('		runtime 5');
 					});
 
 				});
