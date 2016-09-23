@@ -24,6 +24,7 @@ module.exports = () => {
 	describe('Webdriverio Protocol basic functionalities', function() {
 
 		before(function() {
+			mkdirSync('./tests/wdio/wdioBasicFunctions/noChaiAsPromise/');
 			return browser.url('http://www.google.com');
 		});
 
@@ -31,7 +32,6 @@ module.exports = () => {
 
 			it('Transfer promises, taking screenshot on google', function(done) {
 
-				mkdirSync('./tests/wdio/wdioBasicFunctions/noChaiAsPromise/');
 				browser.saveScreenshot('./tests/wdio/wdioBasicFunctions/noChaiAsPromise/google.defaultSize.png');
 				done();
 			});
