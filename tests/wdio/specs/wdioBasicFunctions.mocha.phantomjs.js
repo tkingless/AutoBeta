@@ -80,13 +80,29 @@ module.exports = () => {
 			});
 		});
 
+		//Use this example to illustrate async and sync function again
 		describe('Website navigation 2', function() {
 
-			it('Go to example.com', function() {
-				return browser.url('http://example.com');
-				return browser.getUrl().then(function(url) {
-					console.log(url);
+			it('Go to callbackhell.com', function() {
+				console.log('runtime 1');
+				return browser.url('http://callbackhell.com').then(function() {
+					console.log('runtime 2');
+					return browser.getUrl().then(function(url) {
+						console.log('runtime 3');
+						url.should.equal("http://callbackhell.com/");
+						console.log('runtime 4');
+						browser.saveScreenshot('./tests/wdio/wdioBasicFunctions/noChaiAsPromise/callbackhell.png');
+						console.log('runtime 5');
+					});
+
 				});
+				console.log('runtime 6');
+				return browser.getUrl().then(function(url) {
+					console.log('runtime 7');
+					console.log(url);
+					console.log('runtime 8');
+				});
+				console.log('runtime 9');
 			});
 		});
 
