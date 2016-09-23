@@ -25,7 +25,14 @@ module.exports = () => {
 
 		before(function() {
 			mkdirSync('./tests/wdio/wdioBasicFunctions/noChaiAsPromise/');
-			return browser.url('http://www.google.com');
+		});
+
+		beforeEach(function() {
+			return browser.url('http://www.google.com').then(function(){
+				return browser.getUrl().then(function(url) {
+						url.should.to.contain("http://www.google.com");
+					}); 
+			});
 		});
 
 		describe('Take screenshot', function() {
@@ -60,6 +67,7 @@ module.exports = () => {
 					height: 768
 				}).notify(done);
 			});
+
 		});
 
 		describe('Website navigation', function() {
