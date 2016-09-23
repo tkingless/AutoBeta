@@ -70,7 +70,7 @@ module.exports = () => {
 					browser.getUrl().then(function(url) {
 						browser.saveScreenshot('./tests/wdio/wdioBasicFunctions/noChaiAsPromise/exampleDotCom.png');
 						try {
-							url.should.equal("http://example.com/");
+							url.should.not.equal("http://exaample.com/");
 							done()
 						} catch (e) {
 							done(e);
