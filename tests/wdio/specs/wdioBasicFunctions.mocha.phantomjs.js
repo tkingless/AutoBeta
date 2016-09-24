@@ -129,10 +129,11 @@ module.exports = () => {
 				});
 			})
 
+			//css selector tutorial: http://www.testingexcellence.com/css-selectors-selenium-webdriver-tutorial/
 			it('Async get text attr', function() {
 				return browser
-					.getValue('#als').then(function(value) {
-						console.log(value);
+					.getText('div[id$=_eEe]').then(function(value) {
+						console.log("            ".concat(value));
 					})
 			})
 		})
