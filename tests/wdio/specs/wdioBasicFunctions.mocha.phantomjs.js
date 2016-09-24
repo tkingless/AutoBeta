@@ -35,7 +35,7 @@ module.exports = () => {
 			});
 		});
 
-		/*describe('Take screenshot', function() {
+		describe('Take screenshot', function() {
 
 			it('Transfer promises, taking screenshot on google', function(done) {
 
@@ -112,17 +112,11 @@ module.exports = () => {
 				});
 				console.log('runtime 9');
 			});
-		});*/
+		});
 
 		describe('Google page search webdriverio', function() {
 
 			it('Get source and write as .html', function() {
-				//var selectBox = browser.element('input#lst-ib.gsfi');
-				/*return browser.element('#_eEe').then(function(ele){
-					//var val = ele.getValue();
-					console.log(ele);
-				});*/
-
 				return browser.getSource().then(function(source) {
 					fs.writeFileSync('./tests/wdio/wdioBasicFunctions/noChaiAsPromise/google.html', source);
 					browser.saveScreenshot('./tests/wdio/wdioBasicFunctions/noChaiAsPromise/googleSearch.png');
@@ -130,12 +124,25 @@ module.exports = () => {
 			})
 
 			//css selector tutorial: http://www.testingexcellence.com/css-selectors-selenium-webdriver-tutorial/
-			it('Async get text attr', function() {
+			it('Async() get text attr', function() {
 				return browser
 					.getText('div[id$=_eEe]').then(function(value) {
 						console.log("            ".concat(value));
 					})
 			})
+
+			var keywordToSearch = 'github';
+			it("Set search field text and click btn", function() {
+				return browser.setValue('input[class$=lst]', keywordToSearch).getValue('input[class$=lst]').then(function(value) {
+					value.should.equal(keywordToSearch);
+					browser.saveScreenshot('./tests/wdio/wdioBasicFunctions/noChaiAsPromise/googleFieldInput.png');
+					return browser.click('input[class$=lsb]').then(function() {
+						return browser.saveScreenshot('./tests/wdio/wdioBasicFunctions/noChaiAsPromise/googleFieldSearched.png');
+					})
+
+				})
+			})
+
 		})
 
 	});
