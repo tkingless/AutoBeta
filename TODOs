@@ -31,6 +31,11 @@ WebdrvierIO
 	1. go to standalone-mode/, npm install, npm run test-local (cannot running standalone selenium)
 	2. webdriverio standalone is a specific term, not meaning to "java -jar a selenium standalone server jar", super quick, wdio standalone still need phantomjs prebuilt, but not a selenium server
 
+IntegrationTest:
+	1. delcalre global base path for testoutput, and suffixpath for each test file
+	2. create enable, available pattern folder to manage test case files
+	3. test-wdio to test-wdio-mocha-phantomjs
+
 
 
 deprecated reference:
