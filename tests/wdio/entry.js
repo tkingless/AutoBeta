@@ -22,7 +22,7 @@ if (browserTested == 'phantomjs') {
 
     /** runs PhantomJS */
     //if (isLocal) before(() => phantomjs.run('--webdriver=4444').then(p => program = p))
-    before(() => {
+  if(true) before(() => {
         phantomjs.run('--webdriver=4444').then(p => program = p)
     })
 
@@ -41,10 +41,8 @@ if (browserTested == 'phantomjs') {
 
     /** closes PhantomJS process */
     //if (isLocal) after(() => program.kill())
-    after(() => program.kill())
+   if(true) after(() => program.kill())
 }
-
-
 
 /** generate description from capabilities */
 function desc(connection) {

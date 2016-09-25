@@ -1,151 +1,150 @@
 'use strict'
 const
-    fs = require('fs'),
-    chai = require('chai'),
-    assert = chai.assert,
-    utility = require('../../utility');
+	chai = require('chai'),
+	fs = require('fs'),
+	assert = chai.assert,
+	utility = require('../../../utility');
 
 chai.should();
 
 module.exports = () => {
 
-    describe('Webdriverio Protocol basic functionalities', function() {
+	var testSuiteBaseDir = testOutputBaseDir.concat('noChaiAsPromise/');
 
-        //all it()s are run in series, with only mocha done() callback is called , jump to next it(), if no done event passed to it(), the
-        //it() will just go straight away not waiting async function to fisnish, so add done() to when asyn function is completed.
+	describe('Webdriverio Protocol basic functionalities', function() {
 
-        before(function() {
-            mkdirSync('./tests/wdio/wdioBasicFunctions/noChaiAsPromise/');
-        });
+		//all it()s are run in series, with only mocha done() callback is called , jump to next it(), if no done event passed to it(), the
+		//it() will just go straight away not waiting async function to fisnish, so add done() to when asyn function is completed.
 
-        beforeEach(function() {
-            return browser.url('http://www.google.com').then(function() {
-                return browser.getUrl().then(function(url) {
-                    url.should.to.contain("http://www.google.com");
-                });
-            });
-        });
+		before(function() {
+			utility.mkdirSync(testSuiteBaseDir);
+		});
 
-        describe('Take screenshot', function() {
+		beforeEach(function() {
+			return browser.url('http://www.google.com').then(function() {
+				return browser.getUrl().then(function(url) {
+					url.should.to.contain("http://www.google.com");
+				});
+			});
+		});
 
-            it('Transfer promises, taking screenshot on google', function(done) {
+		describe('Take screenshot', function() {
 
-                browser.saveScreenshot('./tests/wdio/wdioBasicFunctions/noChaiAsPromise/google.defaultSize.png');
-                done();
-            });
+			it('Transfer promises, taking screenshot on google', function(done) {
 
-            it('Set viewPortSize and taking another screenshot', function(done) {
+				browser.saveScreenshot(testSuiteBaseDir.concat('google.defaultSize.png'));
+				done();
+			});
 
-                var desiredSize = {
-                    width: 1024,
-                    height: 768
-                };
+			it('Set viewPortSize and taking another screenshot', function(done) {
 
-                browser.setViewportSize(desiredSize).then(function() {
-                    browser.getViewportSize().then(function(size) {
+				var desiredSize = {
+					width: 1024,
+					height: 768
+				};
 
-                        var screenshot = browser.saveScreenshot().then(function(data) {
-                            return fs.writeFileSync('./tests/wdio/wdioBasicFunctions/noChaiAsPromise/google.1024.768.png', data);
-                        })
-                        done();
-                    })
-                });
-            });
+				browser.setViewportSize(desiredSize).then(function() {
+					browser.getViewportSize().then(function(size) {
 
-            it('Get viewPortSize', function(done) {
-                browser.getViewportSize().should.eventually.deep.equal({
-                    width: 1024,
-                    height: 768
-                }).notify(done);
-            });
+						var screenshot = browser.saveScreenshot().then(function(data) {
+							return fs.writeFileSync(testSuiteBaseDir.concat('google.1024.768.png', data));
+						})
+						done();
+					})
+				});
+			});
 
-        });
+			it('Get viewPortSize', function() {
+				//chai as promised style, ***with function(done) event
+				/*browser.getViewportSize().should.eventually.equal({
+					width: 1024,
+					height: 768
+				}).notify(done);*/
+				browser.getViewportSize().then(function(value) {
+					value.should.equal({
+						width: 1024,
+						height: 768
+					})
+				});
+			});
 
-        describe('Website navigation', function() {
+		});
 
-            it('Go to example.com', function(done) {
-                browser.url('http://example.com').then(function() {
+		describe('Website navigation', function() {
 
-                    browser.getUrl().then(function(url) {
-                        browser.saveScreenshot('./tests/wdio/wdioBasicFunctions/noChaiAsPromise/exampleDotCom.png');
-                        try {
-                            url.should.not.equal("http://exaample.com/");
-                            done()
-                        } catch (e) {
-                            done(e);
-                        }
-                    })
-                });
-            });
-        });
+			it('Go to example.com', function(done) {
+				browser.url('http://example.com').then(function() {
 
-        //Use this example to illustrate async and sync function again
-        describe('Website navigation 2', function() {
+					browser.getUrl().then(function(url) {
+						browser.saveScreenshot(testSuiteBaseDir.concat('exampleDotCom.png'));
+						try {
+							url.should.not.equal("http://exaample.com/");
+							done()
+						} catch (e) {
+							done(e);
+						}
+					})
+				});
+			});
+		});
 
-            it('Go to callbackhell.com', function() {
-                console.log('		runtime 1');
-                return browser.url('http://callbackhell.com').then(function() {
-                    console.log('		runtime 2');
-                    return browser.getUrl().then(function(url) {
-                        console.log('		runtime 3');
-                        url.should.equal("http://callbackhell.com/");
-                        console.log('		runtime 4');
-                        browser.saveScreenshot('./tests/wdio/wdioBasicFunctions/noChaiAsPromise/callbackhell.png');
-                        console.log('		runtime 5');
-                    });
+		//Use this example to illustrate async and sync function again
+		describe('Website navigation 2', function() {
 
-                });
-                console.log('runtime 6');
-                return browser.getUrl().then(function(url) {
-                    console.log('runtime 7');
-                    console.log(url);
-                    console.log('runtime 8');
-                });
-                console.log('runtime 9');
-            });
-        });
+			it('Go to callbackhell.com', function() {
+				console.log('		runtime 1');
+				return browser.url('http://callbackhell.com').then(function() {
+					console.log('		runtime 2');
+					return browser.getUrl().then(function(url) {
+						console.log('		runtime 3');
+						url.should.equal("http://callbackhell.com/");
+						console.log('		runtime 4');
+						browser.saveScreenshot(testSuiteBaseDir.concat('callbackhell.png'));
+						console.log('		runtime 5');
+					});
 
-        describe('Google page search webdriverio', function() {
+				});
+				console.log('runtime 6');
+				return browser.getUrl().then(function(url) {
+					console.log('runtime 7');
+					console.log(url);
+					console.log('runtime 8');
+				});
+				console.log('runtime 9');
+			});
+		});
 
-            it('Get source and write as .html', function() {
-                return browser.getSource().then(function(source) {
-                    fs.writeFileSync('./tests/wdio/wdioBasicFunctions/noChaiAsPromise/google.html', source);
-                    browser.saveScreenshot('./tests/wdio/wdioBasicFunctions/noChaiAsPromise/googleSearch.png');
-                });
-            })
+		describe('Google page search webdriverio', function() {
 
-            //css selector tutorial: http://www.testingexcellence.com/css-selectors-selenium-webdriver-tutorial/
-            it('Async() get text attr', function() {
-                return browser
-                    .getText('div[id$=_eEe]').then(function(value) {
-                        console.log("            ".concat(value));
-                    })
-            })
+			it('Get source and write as .html', function() {
+				return browser.getSource().then(function(source) {
+					fs.writeFileSync(testSuiteBaseDir.concat('google.html'), source);
+					browser.saveScreenshot(testSuiteBaseDir.concat('googleSearch.png'));
+				});
+			})
 
-            var keywordToSearch = 'github';
-            it("Set search field text and click btn", function() {
-                return browser.setValue('input[class$=lst]', keywordToSearch).getValue('input[class$=lst]').then(function(value) {
-                    value.should.equal(keywordToSearch);
-                    browser.saveScreenshot('./tests/wdio/wdioBasicFunctions/noChaiAsPromise/googleFieldInput.png');
-                    return browser.click('input[class$=lsb]').then(function() {
-                        return browser.saveScreenshot('./tests/wdio/wdioBasicFunctions/noChaiAsPromise/googleFieldSearched.png');
-                    })
+			//css selector tutorial: http://www.testingexcellence.com/css-selectors-selenium-webdriver-tutorial/
+			it('Async() get text attr', function() {
+				return browser
+					.getText('div[id$=_eEe]').then(function(value) {
+						console.log("            ".concat(value));
+					})
+			})
 
-                })
-            })
+			var keywordToSearch = 'github';
+			it("Set search field text and click btn", function() {
+				return browser.setValue('input[class$=lst]', keywordToSearch).getValue('input[class$=lst]').then(function(value) {
+					value.should.equal(keywordToSearch);
+					browser.saveScreenshot(testSuiteBaseDir.concat('googleFieldInput.png'));
+					return browser.click('input[class$=lsb]').then(function() {
+						return browser.saveScreenshot(testSuiteBaseDir.concat('googleFieldSearched.png'));
+					})
 
-        })
+				})
+			})
 
-    });
+		})
 
-}
+	});
 
-
-//TODO export this function to utility
-function mkdirSync(path) {
-    try {
-        fs.mkdirSync(path);
-    } catch (e) {
-        if (e.code != 'EEXIST') throw e;
-    }
 }
