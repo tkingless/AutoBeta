@@ -12,7 +12,7 @@
     "mocha": "mocha",
     "wdio": " wdio",
     "istanbul": "istanbul cover _mocha $(find ./lib -name \"*.spec.js\" -not -path \"./node_modules/*\")",
-    "test-wdio": "mocha -t 30000 tests/wdio/wdioFunctionalTest.js"
+    "test-wdioSP": "ENV_RUN=standalone ENV_BROWSER=phantomjs mocha -t 30000 tests/wdio/entry.js"
   },
   "repository": {
     "type": "git",

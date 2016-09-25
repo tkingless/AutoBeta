@@ -1,45 +1,60 @@
-//This is async test case,  run speed found super quick,  http://webdriver.io/guide/getstarted/v4.html  "synchronous"
-
 'use strict'
 
+//TOFIX: 4 dimensional  test paradigm: local/cloud, frameworks, Browsers ,  runMode(wdio-runner, standalone)
 const
-  phantomjs = require('phantomjs-prebuilt'),
-  webdriverio = require('webdriverio'),
-  requireDir = require('require-dir'),
-  specs = requireDir('./specs/'),
-  //isLocal = process.env.E2E_ENV == 'local',
-  //connections = isLocal
-  // ? require('./webdriver.local.js')
-  //  : require('./webdriver.cloud.js')
+    runMode = process.env.ENV_RUN,
+    browserTested = process.env.ENV_BROWSER,
+    webdriverio = require('webdriverio'),
+    requireDir = require('require-dir'),
+    utility = require('./utility'),
+    connections = require(loadConfig());
 
-  //No need to have other config yet
-  connections = require('./wdio.standalone.phantomjs.conf.js')
+global.testOutputBaseDir = __dirname.concat('/wdioTestOutput/');
 
-let program
+if (browserTested == 'phantomjs') {
+    //Run standalone render async test case,  run speed found super quick,  http://webdriver.io/guide/getstarted/v4.html  "synchronous"
+    const
+        phantomjs = require('phantomjs-prebuilt'),
+        specs = requireDir('./specs/phantomjs-standalone/enabled/')
 
-/** runs PhantomJS */
-//if (isLocal) before(() => phantomjs.run('--webdriver=4444').then(p => program = p))
-if (true) before(() => phantomjs.run('--webdriver=4444').then(p => program = p))
+    let program
 
-connections.forEach(connection => {
-  describe(desc(connection), () => {
-    /** runs WebDriver */
-    before(() => global.browser = webdriverio.remote(connection).init())
+    /** runs PhantomJS */
+    //if (isLocal) before(() => phantomjs.run('--webdriver=4444').then(p => program = p))
+    before(() => {
+        utility.mkdirSync(testOutputBaseDir); //TOFIX: move outside
+        phantomjs.run('--webdriver=4444').then(p => program = p)
+    })
 
-    /** execute each test within 'e2e' dir */
-    for (const key in specs) specs[key]()
+    connections.forEach(connection => {
+        describe(desc(connection), () => {
+            /** runs WebDriver */
+            before(() => global.browser = webdriverio.remote(connection).init())
 
-    /** ends the session */
-    after(() => browser.end())
-  })
-})
+            /** execute each test within specs pointed dir */
+            for (const key in specs) specs[key]()
 
-/** closes PhantomJS process */
-//if (isLocal) after(() => program.kill())
-if (true) after(() => program.kill())
+            /** ends the session */
+            after(() => browser.end())
+        })
+    })
+
+    /** closes PhantomJS process */
+    //if (isLocal) after(() => program.kill())
+    after(() => program.kill())
+}
+
+
 
 /** generate description from capabilities */
 function desc(connection) {
-  const c = connection.desiredCapabilities
-  return [c.browserName].concat(c.version || [], c.platform || []).join(' - ')
+    const c = connection.desiredCapabilities
+    return [c.browserName].concat(c.version || [], c.platform || []).join(' - ')
+}
+
+function loadConfig() {
+    //var configName = ['wdio'].concat( runMode || [], browserTested || [], 'conf', 'js' || []).join('.');
+    var configName = ['./wdio'].concat( runMode || [], browserTested || [], 'conf.js' || []).join('.');
+    console.log(configName);
+    return configName;
 }

@@ -89,13 +89,3 @@ module.exports = () => {
 	});
 
 }
-
-
-//TODO export this function to utility
-function mkdirSync(path) {
-	try {
-		fs.mkdirSync(path);
-	} catch (e) {
-		if (e.code != 'EEXIST') throw e;
-	}
-}
