@@ -2,3 +2,4 @@ node_modules/
 coverage
 tests/wdio/wdioBasicFunctions/
 tests/wdio/wdioTestOutput/
+tests/wdio/specs/*enabled/
