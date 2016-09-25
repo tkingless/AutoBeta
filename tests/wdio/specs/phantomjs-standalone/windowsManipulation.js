@@ -25,15 +25,33 @@ module.exports = () => {
 			});
 		});
 
-		describe('"Basic Windows functions', function() {
+		describe('Basic Windows functions', function() {
 
-			it('Get current windows info', function() {
+			it('Get current windows handles', function() {
+				return browser.windowHandles().then(function(windowHdls) {
+					var windows = windowHdls.value;
 
-				browser.saveScreenshot(testSuiteBaseDir.concat('google.defaultSize.png'));
-				done();
+					//ref: http://www.w3schools.com/js/js_arrays.asp
+					//console.log(windows);
+					//console.log(windows[0]);
+					windows.length.should.equal(1);
+					Array.isArray(windows).should.equal(true);
+				})
 			});
 
+			it('Create new window', function() {
+				return browser.newWindow('http://webdriver.io', 'WebdriverIO window', 'width=420,height=230,resizable,scrollbars=yes,status=1').
+				windowHandles().then(function(windowHdls) {
+					var windows = windowHdls.value;
+					windows.length.should.equal(2);
+					Array.isArray(windows).should.equal(true);
+				})
+			})
 		});
+
+		describe('Deal with windows pop up website', function() {
+
+		})
 
 	});
 
