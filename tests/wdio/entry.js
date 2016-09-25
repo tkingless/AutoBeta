@@ -22,7 +22,7 @@ if (browserTested == 'phantomjs') {
 
     /** runs PhantomJS */
     //if (isLocal) before(() => phantomjs.run('--webdriver=4444').then(p => program = p))
-  if(true) before(() => {
+    if (true) before(() => {
         phantomjs.run('--webdriver=4444').then(p => program = p)
     })
 
@@ -41,7 +41,11 @@ if (browserTested == 'phantomjs') {
 
     /** closes PhantomJS process */
     //if (isLocal) after(() => program.kill())
-   if(true) after(() => program.kill())
+    if (true) after(() => {
+
+        console.log('Test run done(), go to '.concat(testOutputBaseDir) + ' to check test result too :)');
+        program.kill();
+    })
 }
 
 /** generate description from capabilities */
