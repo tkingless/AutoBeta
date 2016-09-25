@@ -3,9 +3,12 @@ const
 	chai = require('chai'),
 	fs = require('fs'),
 	assert = chai.assert,
-	utility = require('../../../utility');
+	utility = require('../../utility');
 
 chai.should();
+
+//TODO sym link
+//TODO cutting into pieces
 
 module.exports = () => {
 
