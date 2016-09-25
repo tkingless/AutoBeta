@@ -10,6 +10,7 @@ const
     connections = require(loadConfig());
 
 global.testOutputBaseDir = __dirname.concat('/wdioTestOutput/');
+utility.mkdirSync(testOutputBaseDir);
 
 if (browserTested == 'phantomjs') {
     //Run standalone render async test case,  run speed found super quick,  http://webdriver.io/guide/getstarted/v4.html  "synchronous"
@@ -22,7 +23,6 @@ if (browserTested == 'phantomjs') {
     /** runs PhantomJS */
     //if (isLocal) before(() => phantomjs.run('--webdriver=4444').then(p => program = p))
     before(() => {
-        utility.mkdirSync(testOutputBaseDir); //TOFIX: move outside
         phantomjs.run('--webdriver=4444').then(p => program = p)
     })
 
@@ -54,7 +54,7 @@ function desc(connection) {
 
 function loadConfig() {
     //var configName = ['wdio'].concat( runMode || [], browserTested || [], 'conf', 'js' || []).join('.');
-    var configName = ['./wdio'].concat( runMode || [], browserTested || [], 'conf.js' || []).join('.');
+    var configName = ['./wdio'].concat(runMode || [], browserTested || [], 'conf.js' || []).join('.');
     console.log(configName);
     return configName;
 }

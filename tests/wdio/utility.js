@@ -2,7 +2,7 @@
 const
 	fs = require('fs')
 
-var utility = () => {
+var utility = new(function() {
 	this.mkdirSync = function(path) {
 		try {
 			fs.mkdirSync(path);
@@ -10,6 +10,6 @@ var utility = () => {
 			if (e.code != 'EEXIST') throw e;
 		}
 	}
-}
+})();
 
 module.exports = utility;
