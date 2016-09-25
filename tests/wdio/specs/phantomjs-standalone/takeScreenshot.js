@@ -31,7 +31,6 @@ module.exports = () => {
 		describe('Take screenshot', function() {
 
 			it('Transfer promises, taking screenshot on google', function(done) {
-
 				browser.saveScreenshot(testSuiteBaseDir.concat('google.defaultSize.png'));
 				done();
 			});

@@ -36,16 +36,20 @@ module.exports = () => {
 					//console.log(windows[0]);
 					windows.length.should.equal(1);
 					Array.isArray(windows).should.equal(true);
+					browser.saveScreenshot(testSuiteBaseDir.concat('first.windows.png'));
 				})
 			});
 
 			it('Create new window', function() {
-				return browser.newWindow('http://webdriver.io', 'WebdriverIO window', 'width=420,height=230,resizable,scrollbars=yes,status=1').
-				windowHandles().then(function(windowHdls) {
-					var windows = windowHdls.value;
-					windows.length.should.equal(2);
-					Array.isArray(windows).should.equal(true);
+				return browser.newWindow('http://webdriver.io', 'WebdriverIO window', 'width=420,height=230,resizable,scrollbars=yes,status=1').then(function() {
+					return browser.windowHandles().then(function(windowHdls) {
+						var windows = windowHdls.value;
+						windows.length.should.equal(2);
+						Array.isArray(windows).should.equal(true);
+						browser.saveScreenshot(testSuiteBaseDir.concat('second.windows.png'));
+					})
 				})
+
 			})
 		});
 
