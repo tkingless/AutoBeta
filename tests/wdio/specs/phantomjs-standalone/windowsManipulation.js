@@ -41,7 +41,8 @@ module.exports = () => {
 			});
 
 			it('Create new window', function() {
-				return browser.newWindow('http://webdriver.io', 'WebdriverIO window', 'width=420,height=230,resizable,scrollbars=yes,status=1').then(function() {
+				//TOCHECK: For phantomjs standalone, newWindow(url), url input not working, still need to use url
+				return browser.newWindow('http://hk.yahoo.com').url('http://webdriver.io').then(function() {
 					return browser.windowHandles().then(function(windowHdls) {
 						var windows = windowHdls.value;
 						windows.length.should.equal(2);
