@@ -27,16 +27,17 @@ module.exports = () => {
 
 		describe('Basic Windows functions', function() {
 
+			var firstWin;
 			it('Get current windows handles', function() {
 				return browser.windowHandles().then(function(windowHdls) {
 					var windows = windowHdls.value;
 
 					//ref: http://www.w3schools.com/js/js_arrays.asp
 					//console.log(windows);
-					//console.log(windows[0]);
 					windows.length.should.equal(1);
 					Array.isArray(windows).should.equal(true);
-					browser.saveScreenshot(testSuiteBaseDir.concat('first.windows.png'));
+					browser.saveScreenshot(testSuiteBaseDir.concat('1.first.windows.png'));
+					firstWin = windows[0];
 				})
 			});
 
@@ -49,11 +50,18 @@ module.exports = () => {
 						return browser.windowHandles().then(function(windowHdls) {
 							var windows = windowHdls.value;
 							windows.length.should.equal(2);
-							browser.saveScreenshot(testSuiteBaseDir.concat('second.windows.exampleDotCom.png'));
+							browser.saveScreenshot(testSuiteBaseDir.concat('2.second.windows.exampleDotCom.png'));
 						})
 					})
 
 			})
+
+			it('Switching back to first Windows', function(){
+				return browser.switchTab(firstWin).then(() => {
+					browser.saveScreenshot(testSuiteBaseDir.concat('3.backTo.firstWin.png'));
+				});
+			})
+
 		});
 
 		describe('Deal with windows pop up website', function() {
