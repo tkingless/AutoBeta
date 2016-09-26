@@ -42,14 +42,16 @@ module.exports = () => {
 
 			it('Create new window', function() {
 				//TOCHECK: For phantomjs standalone, newWindow(url), url input not working, still need to use url
-				return browser.newWindow('http://hk.yahoo.com').url('http://webdriver.io').then(function() {
-					return browser.windowHandles().then(function(windowHdls) {
-						var windows = windowHdls.value;
-						windows.length.should.equal(2);
-						Array.isArray(windows).should.equal(true);
-						browser.saveScreenshot(testSuiteBaseDir.concat('second.windows.png'));
+				return browser.newWindow('http://whatever.com.you.input.is.useless').getUrl().then(function(url) {
+						url.should.equal('about:blank');
+					}).url('http://example.com')
+					.then(function() {
+						return browser.windowHandles().then(function(windowHdls) {
+							var windows = windowHdls.value;
+							windows.length.should.equal(2);
+							browser.saveScreenshot(testSuiteBaseDir.concat('second.windows.exampleDotCom.png'));
+						})
 					})
-				})
 
 			})
 		});
