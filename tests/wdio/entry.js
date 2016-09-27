@@ -6,19 +6,18 @@ const
     browserTested = process.env.ENV_BROWSER,
     webdriverio = require('webdriverio'),
     requireDir = require('require-dir'),
+    phantomjs = require('phantomjs-prebuilt'),
+    specs = requireDir('./specs/phantomjs-standalone/enabled/'),
     utility = require('./utility'),
     connections = require(loadConfig());
 
 global.testOutputBaseDir = __dirname.concat('/wdioTestOutput/');
 utility.mkdirSync(testOutputBaseDir);
 
+ let program
+
 if (browserTested == 'phantomjs') {
     //Run standalone render async test case,  run speed found super quick,  http://webdriver.io/guide/getstarted/v4.html  "synchronous"
-    const
-        phantomjs = require('phantomjs-prebuilt'),
-        specs = requireDir('./specs/phantomjs-standalone/enabled/')
-
-    let program
 
     /** runs PhantomJS */
     //if (isLocal) before(() => phantomjs.run('--webdriver=4444').then(p => program = p))
