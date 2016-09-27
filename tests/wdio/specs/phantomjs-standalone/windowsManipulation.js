@@ -104,9 +104,13 @@ module.exports = () => {
 			})
 
 			it('Switch to new pop window', () => {
-				return browser.switchTab(Wnds[1]).then(() => {
-					browser.saveScreenshot(testSuiteBaseDir.concat('7.bochk.the.pop.up.png'));
-				})
+				if (Wnds.length == 2) {
+					return browser.switchTab(Wnds[1]).then(() => {
+						browser.saveScreenshot(testSuiteBaseDir.concat('7.bochk.the.pop.up.png'));
+					})
+				} else{
+					Wnds.should.have.lengthOf(2);
+				}
 			})
 		})
 
