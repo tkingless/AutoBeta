@@ -79,29 +79,32 @@ module.exports = () => {
 
 			var Wnds = [];
 			it('Going to bochk.com', () => {
-				return browser.url('https://its.bochk.com/login/ibs_lgn_index_e.jsp').then(() => {
+				return browser.url('https://its.bochk.com/login/ibs_lgn_index_e.jsp').pause(500).then(() => {
 					browser.saveScreenshot(testSuiteBaseDir.concat('5.bochk.png'));
 					return browser.getSource().then(function(source) {
 						fs.writeFileSync(testSuiteBaseDir.concat('5.bochk.html'), source);
-						return browser.click('#loginbox-nav a[class=apply]').then((ele) => {
-							browser.saveScreenshot(testSuiteBaseDir.concat('6.bochk.png'));
-							return browser.getTabIds().then(function(wnds) {
-								console.log(wnds.length);
-								Wnds = wnds;
-							})
-						})
 					})
 				})
 			})
 
-			it('Switch to new poped up window', () => {
-				/*return browser.click('a[class$=apply]').then(()=>{
-					return browser.getTabIds().then(function(wnds){
-						console.log(wnds);
+			it('Click refresh image, puase and wait image refresh', () => {
+				return browser.click('a[class$=apply][href*=changeImage]').pause(1000).then(() => {
+					browser.saveScreenshot(testSuiteBaseDir.concat('6.bochk.refreshed.png'));
+				});
+			})
+
+			it('Click on pop up window button', () => {
+				return browser.click('#loginbox-nav a[class=apply]').then(() => {
+					return browser.getTabIds().then(function(wnds) {
+						wnds.should.have.lengthOf(2);
+						Wnds = wnds;
 					})
-				})*/
-				return browser.switchTab(Wnds[1]).then( ()=> {
-					browser.saveScreenshot(testSuiteBaseDir.concat('7.bochk.png'));
+				})
+			})
+
+			it('Switch to new pop window', () => {
+				return browser.switchTab(Wnds[1]).then(() => {
+					browser.saveScreenshot(testSuiteBaseDir.concat('7.bochk.the.pop.up.png'));
 				})
 			})
 		})
