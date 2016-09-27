@@ -15,14 +15,15 @@ module.exports = () => {
 
 		before(function() {
 			utility.mkdirSync(testSuiteBaseDir);
-		});
-
-		beforeEach(function() {
 			return browser.url('http://www.google.com').then(function() {
 				return browser.getUrl().then(function(url) {
 					url.should.to.contain("http://www.google.com");
 				});
 			});
+		});
+
+		beforeEach(function() {
+			//this function runs before each it(), crazy
 		});
 
 		describe('"Basic template functions', function() {
