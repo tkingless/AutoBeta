@@ -60,6 +60,11 @@ module.exports = () => {
 
 		})
 
+		describe('Test hover activated extension', () =>{
+			//TODO: http://webdriver.io/v4.0/api/mobile/context.html for example when mouse over "API Version", a pop-up slide appears, v4.0, v4.1 .
+			//and etc. test this out
+		})
+
 	});
 
 }
