@@ -9,7 +9,7 @@ chai.should();
 
 module.exports = () => {
 
-	var testSuiteBaseDir = testOutputBaseDir.concat('noChaiAsPromise/');
+	var testSuiteBaseDir = testOutputBaseDir.concat('ButtonAndField/');
 
 	describe('Button and Textfield tests start:', function() {
 
@@ -18,14 +18,15 @@ module.exports = () => {
 
 		before(function() {
 			utility.mkdirSync(testSuiteBaseDir);
-		});
-
-		beforeEach(function() {
 			return browser.url('http://www.google.com').then(function() {
 				return browser.getUrl().then(function(url) {
 					url.should.to.contain("http://www.google.com");
 				});
 			});
+		});
+
+		beforeEach(function() {
+
 		});
 
 		var keywordToSearch = 'github';
@@ -34,7 +35,7 @@ module.exports = () => {
 			it('Get source and write as .html', function() {
 				return browser.getSource().then(function(source) {
 					fs.writeFileSync(testSuiteBaseDir.concat('google.html'), source);
-					browser.saveScreenshot(testSuiteBaseDir.concat('googleSearch.png'));
+					browser.saveScreenshot(testSuiteBaseDir.concat('1.googleSearch.png'));
 				});
 			})
 
@@ -49,9 +50,9 @@ module.exports = () => {
 			it("Set search field text and click btn", function() {
 				return browser.setValue('input[class$=lst]', keywordToSearch).getValue('input[class$=lst]').then(function(value) {
 					value.should.equal(keywordToSearch);
-					browser.saveScreenshot(testSuiteBaseDir.concat('googleFieldInput.png'));
+					browser.saveScreenshot(testSuiteBaseDir.concat('2.googleFieldInput.png'));
 					return browser.click('input[class$=lsb]').then(function() {
-						return browser.saveScreenshot(testSuiteBaseDir.concat('googleFieldSearched.png'));
+						return browser.saveScreenshot(testSuiteBaseDir.concat('3.googleFieldSearched.png'));
 					})
 
 				})

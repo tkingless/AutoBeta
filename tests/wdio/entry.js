@@ -14,38 +14,35 @@ const
 global.testOutputBaseDir = __dirname.concat('/wdioTestOutput/');
 utility.mkdirSync(testOutputBaseDir);
 
- let program
+let program
 
-if (browserTested == 'phantomjs') {
-    //Run standalone render async test case,  run speed found super quick,  http://webdriver.io/guide/getstarted/v4.html  "synchronous"
+//Run standalone render async test case,  run speed found super quick,  http://webdriver.io/guide/getstarted/v4.html  "synchronous"
 
-    /** runs PhantomJS */
-    //if (isLocal) before(() => phantomjs.run('--webdriver=4444').then(p => program = p))
-    if (true) before(() => {
-        phantomjs.run('--webdriver=4444').then(p => program = p)
+/** runs PhantomJS */
+//if (isLocal) before(() => phantomjs.run('--webdriver=4444').then(p => program = p))
+if (browserTested == 'phantomjs') before(() => {
+    phantomjs.run('--webdriver=4444').then(p => program = p)
+})
+
+connections.forEach(connection => {
+    describe(desc(connection), () => {
+        /** runs WebDriver */
+        before(() => global.browser = webdriverio.remote(connection).init())
+
+        /** execute each test within specs pointed dir */
+        for (const key in specs) specs[key]()
+
+        /** ends the session */
+        after(() => browser.end())
     })
+})
 
-    connections.forEach(connection => {
-        describe(desc(connection), () => {
-            /** runs WebDriver */
-            before(() => global.browser = webdriverio.remote(connection).init())
-
-            /** execute each test within specs pointed dir */
-            for (const key in specs) specs[key]()
-
-            /** ends the session */
-            after(() => browser.end())
-        })
-    })
-
-    /** closes PhantomJS process */
-    //if (isLocal) after(() => program.kill())
-    if (true) after(() => {
-
-        console.log('Test run done(), go to '.concat(testOutputBaseDir) + ' to check test result too :)');
-        program.kill();
-    })
-}
+/** closes PhantomJS process */
+//if (isLocal) after(() => program.kill())
+if (browserTested == 'phantomjs') after(() => {
+    console.log('Test run done(), go to '.concat(testOutputBaseDir) + ' to check test result too :)');
+    program.kill();
+})
 
 /** generate description from capabilities */
 function desc(connection) {

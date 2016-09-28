@@ -9,7 +9,7 @@ chai.should();
 
 module.exports = () => {
 
-	var testSuiteBaseDir = testOutputBaseDir.concat('noChaiAsPromise/');
+	var testSuiteBaseDir = testOutputBaseDir.concat('Screenshot/');
 
 	describe('Take Screenshot tests start:', function() {
 
@@ -18,9 +18,6 @@ module.exports = () => {
 
 		before(function() {
 			utility.mkdirSync(testSuiteBaseDir);
-		});
-
-		beforeEach(function() {
 			return browser.url('http://www.google.com').then(function() {
 				return browser.getUrl().then(function(url) {
 					url.should.to.contain("http://www.google.com");
@@ -28,10 +25,14 @@ module.exports = () => {
 			});
 		});
 
+		beforeEach(function() {
+
+		});
+
 		describe('Take screenshot', function() {
 
 			it('Transfer promises, taking screenshot on google', function(done) {
-				browser.saveScreenshot(testSuiteBaseDir.concat('google.defaultSize.png'));
+				browser.saveScreenshot(testSuiteBaseDir.concat('1.google.defaultSize.png'));
 				done();
 			});
 
@@ -46,7 +47,7 @@ module.exports = () => {
 					browser.getViewportSize().then(function(size) {
 
 						var screenshot = browser.saveScreenshot().then(function(data) {
-							return fs.writeFileSync(testSuiteBaseDir.concat('google.1024.768.png', data));
+							return fs.writeFileSync(testSuiteBaseDir.concat('2.google.1024.768.png', data));
 						})
 						done();
 					})

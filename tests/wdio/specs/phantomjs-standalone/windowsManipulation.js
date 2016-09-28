@@ -9,7 +9,7 @@ chai.should();
 
 module.exports = () => {
 
-	var testSuiteBaseDir = testOutputBaseDir.concat('noChaiAsPromise/');
+	var testSuiteBaseDir = testOutputBaseDir.concat('Windows/');
 
 	describe('Windows tests start:', function() {
 

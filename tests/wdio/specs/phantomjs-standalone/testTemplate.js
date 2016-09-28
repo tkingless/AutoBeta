@@ -9,7 +9,7 @@ chai.should();
 
 module.exports = () => {
 
-	var testSuiteBaseDir = testOutputBaseDir.concat('noChaiAsPromise/');
+	var testSuiteBaseDir = testOutputBaseDir.concat('testTemplate/');
 
 	describe('template tests start:', function() {
 

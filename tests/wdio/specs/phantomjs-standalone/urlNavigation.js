@@ -9,7 +9,7 @@ chai.should();
 
 module.exports = () => {
 
-	var testSuiteBaseDir = testOutputBaseDir.concat('noChaiAsPromise/');
+	var testSuiteBaseDir = testOutputBaseDir.concat('Navigation/');
 
 	describe('urlNavigation tests start:', function() {
 
@@ -18,14 +18,15 @@ module.exports = () => {
 
 		before(function() {
 			utility.mkdirSync(testSuiteBaseDir);
-		});
-
-		beforeEach(function() {
 			return browser.url('http://www.google.com').then(function() {
 				return browser.getUrl().then(function(url) {
 					url.should.to.contain("http://www.google.com");
 				});
 			});
+		});
+
+		beforeEach(function() {
+
 		});
 
 		describe('Website navigation with done callback style', function() {
@@ -34,7 +35,7 @@ module.exports = () => {
 				browser.url('http://example.com').then(function() {
 
 					browser.getUrl().then(function(url) {
-						browser.saveScreenshot(testSuiteBaseDir.concat('exampleDotCom.png'));
+						browser.saveScreenshot(testSuiteBaseDir.concat('1.exampleDotCom.png'));
 						try {
 							url.should.not.equal("http://exaample.com/");
 							done()
@@ -57,7 +58,7 @@ module.exports = () => {
 						console.log('		runtime 3');
 						url.should.equal("http://callbackhell.com/");
 						console.log('		runtime 4');
-						browser.saveScreenshot(testSuiteBaseDir.concat('callbackhell.png'));
+						browser.saveScreenshot(testSuiteBaseDir.concat('2.callbackhell.png'));
 						console.log('		runtime 5');
 					});
 
