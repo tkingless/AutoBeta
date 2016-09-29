@@ -9,6 +9,7 @@ const
     phantomjs = require('phantomjs-prebuilt'),
     specs = requireDir('./specs/phantomjs-standalone/enabled/'),
     utility = require('./utility'),
+    //TODO the loadconfig() may async, causing the first run failed connection problem
     //connections = require(loadConfig());
     connections = require('./wdio.standalone.phantomjs.conf.js');
 
