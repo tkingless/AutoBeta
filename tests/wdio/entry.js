@@ -9,7 +9,8 @@ const
     phantomjs = require('phantomjs-prebuilt'),
     specs = requireDir('./specs/phantomjs-standalone/enabled/'),
     utility = require('./utility'),
-    connections = require(loadConfig());
+    //connections = require(loadConfig());
+    connections = require('./wdio/standalone.phantomjs.conf.js');
 
 global.testOutputBaseDir = __dirname.concat('/wdioTestOutput/');
 utility.mkdirSync(testOutputBaseDir);
