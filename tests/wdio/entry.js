@@ -19,31 +19,32 @@ let program
 //Run standalone render async test case,  run speed found super quick,  http://webdriver.io/guide/getstarted/v4.html  "synchronous"
 
 /** runs PhantomJS */
-//TODO don't know why if (browserTested == 'phantomjs') before(() => {phantomjs.run('--webdriver=4444').then(p => program = p)}) not working in running first time,
-//brackets has issue
+
 if (browserTested == 'phantomjs') {
 
+    //TODO don't know why if (browserTested == 'phantomjs') before(() => {phantomjs.run('--webdriver=4444').then(p => program = p)}) not working in running first time,
+    //brackets has issue
     before(() => phantomjs.run('--webdriver=4444').then(p => program = p))
 
-connections.forEach(connection => {
-    describe(desc(connection), () => {
-        /** runs WebDriver */
-        before(() => global.browser = webdriverio.remote(connection).init())
+    connections.forEach(connection => {
+        describe(desc(connection), () => {
+            /** runs WebDriver */
+            before(() => global.browser = webdriverio.remote(connection).init())
 
-        /** execute each test within specs pointed dir */
-        for (const key in specs) specs[key]()
+            /** execute each test within specs pointed dir */
+            for (const key in specs) specs[key]()
 
-        /** ends the session */
-        after(() => browser.end())
+            /** ends the session */
+            after(() => browser.end())
+        })
     })
-})
 
-/** closes PhantomJS process */
-//if (isLocal) after(() => program.kill())
- after(() => {
-    console.log('Test run done(), go to '.concat(testOutputBaseDir) + ' to check test result too :)');
-    program.kill();
-})
+    /** closes PhantomJS process */
+    //if (isLocal) after(() => program.kill())
+    after(() => {
+        console.log('Test run done(), go to '.concat(testOutputBaseDir) + ' to check test result too :)');
+        program.kill();
+    })
 }
 
 /** generate description from capabilities */
