@@ -14,13 +14,11 @@ const
 global.testOutputBaseDir = __dirname.concat('/wdioTestOutput/');
 utility.mkdirSync(testOutputBaseDir);
 
-let program
-
-//Run standalone render async test case,  run speed found super quick,  http://webdriver.io/guide/getstarted/v4.html  "synchronous"
-
 /** runs PhantomJS */
 
 if (browserTested == 'phantomjs') {
+    //Run standalone render async test case,  run speed found super quick,  http://webdriver.io/guide/getstarted/v4.html  "synchronous"
+    let program
 
     //TODO don't know why if (browserTested == 'phantomjs') before(() => {phantomjs.run('--webdriver=4444').then(p => program = p)}) not working in running first time,
     //brackets has issue
@@ -54,8 +52,6 @@ function desc(connection) {
 }
 
 function loadConfig() {
-    //var configName = ['wdio'].concat( runMode || [], browserTested || [], 'conf', 'js' || []).join('.');
     var configName = ['./wdio'].concat(runMode || [], browserTested || [], 'conf.js' || []).join('.');
-    console.log(configName);
     return configName;
 }
