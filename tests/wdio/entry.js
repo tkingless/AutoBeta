@@ -21,7 +21,9 @@ let program
 /** runs PhantomJS */
 //TODO don't know why if (browserTested == 'phantomjs') before(() => {phantomjs.run('--webdriver=4444').then(p => program = p)}) not working in running first time,
 //brackets has issue
-if (browserTested == 'phantomjs') before(() => phantomjs.run('--webdriver=4444').then(p => program = p))
+if (browserTested == 'phantomjs') {
+
+    before(() => phantomjs.run('--webdriver=4444').then(p => program = p))
 
 connections.forEach(connection => {
     describe(desc(connection), () => {
@@ -38,10 +40,11 @@ connections.forEach(connection => {
 
 /** closes PhantomJS process */
 //if (isLocal) after(() => program.kill())
-if (browserTested == 'phantomjs') after(() => {
+ after(() => {
     console.log('Test run done(), go to '.concat(testOutputBaseDir) + ' to check test result too :)');
     program.kill();
 })
+}
 
 /** generate description from capabilities */
 function desc(connection) {
