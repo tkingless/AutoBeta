@@ -9,9 +9,7 @@ const
     phantomjs = require('phantomjs-prebuilt'),
     specs = requireDir('./specs/phantomjs-standalone/enabled/'),
     utility = require('./utility'),
-    //TODO the loadconfig() may async, causing the first run failed connection problem
-    //connections = require(loadConfig());
-    connections = require('./wdio.standalone.phantomjs.conf.js');
+    connections = require(loadConfig());
 
 global.testOutputBaseDir = __dirname.concat('/wdioTestOutput/');
 utility.mkdirSync(testOutputBaseDir);
@@ -21,10 +19,9 @@ let program
 //Run standalone render async test case,  run speed found super quick,  http://webdriver.io/guide/getstarted/v4.html  "synchronous"
 
 /** runs PhantomJS */
-//if (isLocal) before(() => phantomjs.run('--webdriver=4444').then(p => program = p))
-if (browserTested == 'phantomjs') before(() => {
-    phantomjs.run('--webdriver=4444').then(p => program = p)
-})
+//TODO don't know why if (browserTested == 'phantomjs') before(() => {phantomjs.run('--webdriver=4444').then(p => program = p)}) not working in running first time,
+//brackets has issue
+if (browserTested == 'phantomjs') before(() => phantomjs.run('--webdriver=4444').then(p => program = p))
 
 connections.forEach(connection => {
     describe(desc(connection), () => {
