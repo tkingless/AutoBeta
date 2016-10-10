@@ -34,6 +34,9 @@ WebdrvierIO
 IntegrationTest:
 	1. use chai as promised for rewriting test cases
 
+PhantomJs
+	1. utilize phatomjs internal  features
+
 
 
 deprecated reference:
