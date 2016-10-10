@@ -21,7 +21,7 @@ if (browserTested == 'phantomjs') {
     let program
 
     //TODO don't know why if (browserTested == 'phantomjs') before(() => {phantomjs.run('--webdriver=4444').then(p => program = p)}) not working in running first time,
-    //brackets has issue
+    //brackets cause first time run issue
     before(() => phantomjs.run('--webdriver=4444').then(p => program = p))
 
     connections.forEach(connection => {
