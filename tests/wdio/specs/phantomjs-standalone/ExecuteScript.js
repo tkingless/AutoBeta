@@ -32,12 +32,35 @@ module.exports = () => {
 				//TODO something you want
 				browser.execute(function(a, b, c, d) {
 					// browser context - you may not access client or console
+					console.log("inside browser console log"); //Note: i.e. this line of output is not to terminal
 					return a + b + c + d;
 				}, 1, 2, 3, 4).then(function(ret) {
 					// node.js context - client and console are available
-					console.log(ret.value); // outputs: 10
+					console.log("dummy: " + ret.value); // outputs: 10
 				});
 			});
+
+			/*it('calling phatomjs by injecting snippet', () => {
+				browser.execute(function(){
+					console.log("tkingkwun");
+					var page = require('webpage').create();
+					return "tsangkk";
+				}).then(function(returned){
+					console.log(returned.value);
+				})
+			})*/
+
+			it('async execute() ', function(done) {
+				browser.timeoutsAsyncScript(5000)
+					.executeAsync(function(a, b, c, d, done) {
+						setTimeout(function() {
+							done(a + b + c + d);
+						}, 3000);
+					}, 1, 2, 3, 4).then(function(ret) {
+						console.log("Async: " + ret.value);
+						done();
+					})
+			})
 
 		});
 
