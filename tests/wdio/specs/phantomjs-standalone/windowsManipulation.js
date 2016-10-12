@@ -5,6 +5,8 @@ const
 	assert = chai.assert,
 	utility = require('../../utility');
 
+var wdioElementScreenshot = require('wdio-element-screenshot');
+
 chai.should();
 
 module.exports = () => {
@@ -15,6 +17,7 @@ module.exports = () => {
 
 		before(function() {
 			utility.mkdirSync(testSuiteBaseDir);
+			wdioElementScreenshot.init(browser);
 			return browser.url('http://www.google.com').then(function() {
 				return browser.getUrl().then(function(url) {
 					url.should.to.contain("http://www.google.com");
@@ -91,6 +94,8 @@ module.exports = () => {
 			it('Click refresh image, puase and wait image refresh', () => {
 				return browser.click('a[class$=apply][href*=changeImage]').pause(1000).then(() => {
 					browser.saveScreenshot(testSuiteBaseDir.concat('6.bochk.refreshed.png'));
+					//TODO infact the element screenshot is a bit mis-scoping
+					return browser.saveElementScreenshot('#verifyImg', testSuiteBaseDir.concat('6.5.element.screeshot.png'));
 				});
 			})
 
@@ -108,7 +113,7 @@ module.exports = () => {
 					return browser.switchTab(Wnds[1]).then(() => {
 						browser.saveScreenshot(testSuiteBaseDir.concat('7.bochk.the.pop.up.png'));
 					})
-				} else{
+				} else {
 					Wnds.should.have.lengthOf(2);
 				}
 			})
