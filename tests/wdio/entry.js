@@ -21,7 +21,9 @@ if (browserTested == 'phantomjs') {
     let program
 
     //TODO don't know why if (browserTested == 'phantomjs') before(() => {phantomjs.run('--webdriver=4444').then(p => program = p)}) not working in running first time,
-    //brackets cause first time run issue
+    //brackets cause first time run issue, may need to promise/return
+    //REFERENCE: https://www.npmjs.com/package/phantomjs-prebuilt and http://phantomjs.org/api/command-line.html
+    //Therefore the webpage objects is module built on phatomjs, the callback like onResourceReceived() of its features is too high level to be used with wdio
     before(() => phantomjs.run('--webdriver=4444').then(p => program = p))
 
     connections.forEach(connection => {
