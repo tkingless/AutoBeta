@@ -5,6 +5,8 @@ const
 	assert = chai.assert,
 	utility = require('../../utility');
 
+var wdioElementScreenshot = require('wdio-element-screenshot');
+
 chai.should();
 
 module.exports = () => {
@@ -15,6 +17,7 @@ module.exports = () => {
 
 		before(function() {
 			utility.mkdirSync(testSuiteBaseDir);
+			wdioElementScreenshot.init(browser);
 			return browser.url('http://www.google.com').then(function() {
 				return browser.getUrl().then(function(url) {
 					url.should.to.contain("http://www.google.com");
