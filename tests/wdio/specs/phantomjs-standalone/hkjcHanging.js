@@ -97,6 +97,57 @@ module.exports = () => {
 				browser.saveScreenshot(testSuiteBaseDir.concat('6.min.png'));
 			});
 
+			it('wait 1 min', function(done) {
+				setTimeout(function() {
+					console.log('waiting over.');
+					done();
+				}, 60000);
+			});
+
+			it('min 7', function() {
+				browser.saveScreenshot(testSuiteBaseDir.concat('6.min.png'));
+			});
+
+			it('wait 1 min', function(done) {
+				setTimeout(function() {
+					console.log('waiting over.');
+					done();
+				}, 60000);
+			});
+
+			it('min 8', function() {
+				browser.saveScreenshot(testSuiteBaseDir.concat('6.min.png'));
+			});
+
+			it('wait 1 min', function(done) {
+				setTimeout(function() {
+					console.log('waiting over.');
+					done();
+				}, 60000);
+			});
+
+			it('min 9', function() {
+				browser.saveScreenshot(testSuiteBaseDir.concat('6.min.png'));
+			});
+
+			it('wait 1 min', function(done) {
+				setTimeout(function() {
+					console.log('waiting over.');
+					done();
+				}, 60000);
+			});
+
+			it('min 10', function() {
+				browser.saveScreenshot(testSuiteBaseDir.concat('6.min.png'));
+			});
+
+			it('wait 1 min', function(done) {
+				setTimeout(function() {
+					console.log('waiting over.');
+					done();
+				}, 60000);
+			});
+
 		});
 
 	});
