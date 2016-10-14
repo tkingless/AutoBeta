@@ -13,7 +13,7 @@ module.exports = () => {
 
 	var testSuiteBaseDir = testOutputBaseDir.concat('hkjcHanging/');
 
-	describe('template tests start:', function() {
+	describe('HKJC tests start:', function() {
 
 		before(function() {
 			utility.mkdirSync(testSuiteBaseDir);
@@ -25,7 +25,7 @@ module.exports = () => {
 			//this function runs before each it(), crazy
 		});
 
-		describe('"Holding for ten minustes', function() {
+		describe('"Holding for 15 minustes, result: the auto refresh function works', function() {
 
 			it('min 0', function() {
 				browser.saveScreenshot(testSuiteBaseDir.concat('0.min.png'));
@@ -34,8 +34,8 @@ module.exports = () => {
 			it('wait 1 min', function(done) {
 				setTimeout(function() {
 					console.log('waiting over.');
-					done();
 				}, 60000);
+				done();
 			})
 
 			it('min 1', function() {
@@ -45,8 +45,8 @@ module.exports = () => {
 			it('wait 1 min', function(done) {
 				setTimeout(function() {
 					console.log('waiting over.');
-					done();
 				}, 60000);
+				done();
 			});
 
 			it('min 2', function() {
@@ -56,8 +56,8 @@ module.exports = () => {
 			it('wait 1 min', function(done) {
 				setTimeout(function() {
 					console.log('waiting over.');
-					done();
 				}, 60000);
+				done();
 			});
 
 			it('min 3', function() {
@@ -67,8 +67,8 @@ module.exports = () => {
 			it('wait 1 min', function(done) {
 				setTimeout(function() {
 					console.log('waiting over.');
-					done();
 				}, 60000);
+				done();
 			});
 
 			it('min 4', function() {
@@ -78,8 +78,8 @@ module.exports = () => {
 			it('wait 1 min', function(done) {
 				setTimeout(function() {
 					console.log('waiting over.');
-					done();
 				}, 60000);
+				done();
 			});
 
 			it('min 5', function() {
@@ -89,8 +89,8 @@ module.exports = () => {
 			it('wait 1 min', function(done) {
 				setTimeout(function() {
 					console.log('waiting over.');
-					done();
 				}, 60000);
+				done();
 			});
 
 			it('min 6', function() {
@@ -100,52 +100,123 @@ module.exports = () => {
 			it('wait 1 min', function(done) {
 				setTimeout(function() {
 					console.log('waiting over.');
-					done();
 				}, 60000);
+				done();
 			});
 
 			it('min 7', function() {
-				browser.saveScreenshot(testSuiteBaseDir.concat('6.min.png'));
+				browser.saveScreenshot(testSuiteBaseDir.concat('7.min.png'));
 			});
 
 			it('wait 1 min', function(done) {
 				setTimeout(function() {
 					console.log('waiting over.');
-					done();
 				}, 60000);
+				done();
 			});
 
 			it('min 8', function() {
-				browser.saveScreenshot(testSuiteBaseDir.concat('6.min.png'));
+				browser.saveScreenshot(testSuiteBaseDir.concat('8.min.png'));
 			});
 
 			it('wait 1 min', function(done) {
 				setTimeout(function() {
 					console.log('waiting over.');
-					done();
 				}, 60000);
+				done();
 			});
 
 			it('min 9', function() {
-				browser.saveScreenshot(testSuiteBaseDir.concat('6.min.png'));
+				browser.saveScreenshot(testSuiteBaseDir.concat('9.min.png'));
 			});
 
 			it('wait 1 min', function(done) {
 				setTimeout(function() {
 					console.log('waiting over.');
-					done();
 				}, 60000);
+				done();
 			});
 
 			it('min 10', function() {
-				browser.saveScreenshot(testSuiteBaseDir.concat('6.min.png'));
+				browser.saveScreenshot(testSuiteBaseDir.concat('10.min.png'));
 			});
 
 			it('wait 1 min', function(done) {
 				setTimeout(function() {
 					console.log('waiting over.');
-					done();
 				}, 60000);
+				done();
+			});
+
+			it('min 11, click refresh', function() {
+				return browser.click('a[class$=refresh]').then(() => {
+					browser.saveScreenshot(testSuiteBaseDir.concat('11.min.refresh.png'));
+				})
+			});
+
+			it('wait 1 min', function(done) {
+				setTimeout(function() {
+					console.log('waiting over.');
+				}, 60000);
+				done();
+			});
+
+			it('min 12, click refresh', function() {
+				return browser.click('a[class$=refresh]').then(() => {
+					browser.saveScreenshot(testSuiteBaseDir.concat('12.min.refresh.png'));
+				})
+			});
+
+			it('wait 1 min', function(done) {
+				setTimeout(function() {
+					console.log('waiting over.');
+				}, 60000);
+				done();
+			});
+
+			it('min 13, click refresh', function() {
+				return browser.click('a[class$=refresh]').then(() => {
+					browser.saveScreenshot(testSuiteBaseDir.concat('13.min.refresh.png'));
+				})
+			});
+
+			it('wait 1 min', function(done) {
+				setTimeout(function() {
+					console.log('waiting over.');
+				}, 60000);
+				done();
+			});
+
+			it('min 14, click refresh', function() {
+				return browser.click('a[class$=refresh]').then(() => {
+					browser.saveScreenshot(testSuiteBaseDir.concat('14.min.refresh.png'));
+				})
+			});
+
+			it('wait 1 min', function(done) {
+				setTimeout(function() {
+					console.log('waiting over.');
+				}, 60000);
+				done();
+			});
+
+			it('min 15, click refresh', function() {
+				return browser.click('a[class$=refresh]').then(() => {
+					browser.saveScreenshot(testSuiteBaseDir.concat('15.min.refresh.png'));
+				})
+			});
+
+			it('wait 1 min', function(done) {
+				setTimeout(function() {
+					console.log('waiting over.');
+				}, 60000);
+				done();
+			});
+
+			it('min 16, click refresh', function() {
+				return browser.click('a[class$=refresh]').then(() => {
+					browser.saveScreenshot(testSuiteBaseDir.concat('16.min.refresh.png'));
+				})
 			});
 
 		});
